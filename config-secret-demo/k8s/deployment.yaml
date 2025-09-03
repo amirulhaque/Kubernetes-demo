@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kcs-demo
+  namespace: demo-secrets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kcs-demo
+  template:
+    metadata:
+      labels:
+        app: kcs-demo
+    spec:
+      containers:
+      - name: app
+        image: REPLACE_WITH_IMAGE # 👈 replace with your Docker Hub image
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: app-config
+        env:
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: DB_PASSWORD
+        volumeMounts:
+        - name: config-vol
+          mountPath: /etc/config
+          readOnly: true
+        - name: secret-vol
+          mountPath: /etc/secret
+          readOnly: true
+      volumes:
+      - name: config-vol
+        configMap:
+          name: app-config
+          items:
+          - key: app-config.json
+            path: app-config.json
+      - name: secret-vol
+        secret:
+          secretName: app-secret
