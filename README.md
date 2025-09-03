@@ -1,14 +1,4 @@
-# 🚀 Kubernetes ConfigMap & Secret Demo
 
-This project is a **Node.js web application** that demonstrates how to securely manage configuration and sensitive data in Kubernetes.
-
-It shows how you can:
-- ✅ Use **ConfigMap values** as environment variables
-- ✅ Mount **ConfigMap JSON files** as volumes
-- ✅ Use **Secrets** as environment variables
-- ✅ Mount a **Secret key** as a volume file
-
----
 
 ## ✨ **What are ConfigMaps and Secrets?**
 
