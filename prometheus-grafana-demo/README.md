@@ -31,22 +31,31 @@ You will learn:
 
 ### 🔹 Prometheus  
 → **Open-source monitoring system**  
+
 → Works by scraping metrics endpoints (`/metrics`) over **HTTP**  
+
 → Stores data in a **time-series database**  
-→ Supports **PromQL queries** for analysis  
+
+→ Supports **PromQL queries** for analysis 
+
 → Integrates with **Alertmanager** for alerts  
 
 ### 🔸 Grafana  
 → **Visualization platform** for time-series data  
+
 → Connects to **Prometheus** (and many other sources)  
-→ Lets you build dashboards with **charts, tables, gauges**  
+
+→ Lets you build dashboards with **charts, tables, gauges** 
+
 → Provides **real-time observability** and alerting  
 
 
 ### 🔗 How They Work Together  
 
-1. **Flask App** → Exposes `/metrics` endpoint  
-2. **Prometheus** → Scrapes data and stores it  
+1. **Flask App** → Exposes `/metrics` endpoint
+   
+2. **Prometheus** → Scrapes data and stores it
+   
 3. **Grafana** → Queries Prometheus and visualizes metrics  
 
 > ℹ️ **Info:** Prometheus is the data collector and storage, while Grafana is the visualizer.  
