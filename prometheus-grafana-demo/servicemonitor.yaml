@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: sample-flask
+  namespace: sample-app
+  labels:
+    release: kube-prometheus-stack # must match your Helm release name
+spec:
+  selector:
+    matchLabels:
+      app: sample-flask
+  namespaceSelector:
+    matchNames:
+      - sample-app
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
